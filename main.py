@@ -12,6 +12,7 @@ def get_weather(city: str):
         data = r.json()
         # pp(data)
 
+
         if data["cod"] == "200":
 
             city_name = data["city"]["name"]
