@@ -9,11 +9,12 @@ def get_weather(city: str):
     global TOKEN
     try:
         r = requests.get(f"https://api.openweathermap.org/data/2.5/forecast?q={city}&appid={TOKEN}&units=metric")
+
         data = r.json()
         # pp(data)
 
 
-        if data["cod"] == "200":
+        if r.status_code == 200:
 
             city_name = data["city"]["name"]
             country_name = data["city"]["country"]
