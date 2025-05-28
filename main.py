@@ -13,7 +13,6 @@ def get_weather(city: str):
         data = r.json()
         # pp(data)
 
-
         if r.status_code == 200:
 
             city_name = data["city"]["name"]

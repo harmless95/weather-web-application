@@ -32,3 +32,28 @@
     ## В фале храним токкен для подключения API.
 # test_main.py
     ## Делаем тесты где определяем файлы из API.
+        1. Название файла должно начинаться на test_
+        2. Импортируем библеотеку unittest
+        3. В класс TestMain() берем из unittest TestCase.
+        4. Создаем метод def setUp(self): И указываем там параметры, которые нам понадобятся во время всего процесса тестирования.
+        5. Создаем методы где в каждом будут проводится определеные проверки, все методы должны начинаться на def test_.
+            - def test_out_city(self):  метод для проверки города.
+                + assert указаны:
+                    ++ self.assertIsInstance(self.city_name, str) проверяем тип. 
+                    ++ self.assertTrue(self.city_name.lower(), city) проверяем имя города из полученных данных.
+            - def test_out_country(self): метод для проверки страны в котором находится город.
+                + assert указаны:
+                    ++ self.assertIsInstance(self.country_name, str) проверяем тип
+                    ++ self.assertTrue(self.country_name, country) проверяем страну по названию города из полученных данных.
+            - def test_out_dict_day(self): метод для проверки данных прогноза погод по дате.
+                + assert указаны:
+                    ++ self.assertIsInstance(self.dict_day, dict) проверяем тип
+                    ++ проверяем наличие нужных данных в словаре:
+                        +++ self.assertIn(temp, i_values) Температура
+                        +++ self.assertIn(humidity, i_values) Влажность
+                        +++ self.assertIn(pressure, i_values) Давление
+                        +++ self.assertIn(wind, i_values) Ветер
+                    ++ self.assertIsInstance(datetime.strptime(i_key, format_date), datetime) Проверяем формат даты.
+            - def test_error(self): метод для получения данных в случаи ошибки.
+                + assert указаны:
+                    ++ self.assertTrue(get_weather(city_int), error) получаем в случаи ошибки
