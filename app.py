@@ -10,7 +10,7 @@ def get_weather(city: str, token_wt):
         data = r.json()
         pp(data)
         if data["cod"] == '200':
-            print(200)
+
             city_name = data["city"]["name"]
             country_name = data["city"]["country"]
 
@@ -23,12 +23,6 @@ def get_weather(city: str, token_wt):
                 for i_day in data["list"][:3]
             ]
             output = f"Город: {city_name}, Страна: {country_name}, \nПрогноз погоды:"
-            # for day in list_day:
-            #     output += (f"\nДата: {day['Дата']}, "
-            #                f"Температура: {day['Температура']}°C, "
-            #                f"Влажность: {day['Влажность']}%, "
-            #                f"Давление: {day['Давление']} гПа, "
-            #                f"Ветер: {day['Ветер']} м/с")
             print(output)
             pp(list_day)
     except Exception as ex:
