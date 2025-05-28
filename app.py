@@ -1,4 +1,4 @@
-from flask import Flask, abort
+from flask import Flask
 from main import get_weather
 
 app = Flask(__name__)

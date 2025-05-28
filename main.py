@@ -26,21 +26,18 @@ def get_weather(city: str):
                 }
                 for i_day in data["list"][:3]
             }
-
-            output = f"Город: {city_name}, Страна: {country_name}, \nПрогноз погоды:"
-            # print(output)
-            # pp(dict_day)
             return city_name, country_name, dict_day
         else:
-            return 404
+            return 401
     except Exception as ex:
         print(ex)
 
-
-
 def main():
     city = "moscow"
-    get_weather(city=city)
+    city_name, country_name, dict_day = get_weather(city=city)
+    output = f"Город: {city_name}, Страна: {country_name}, \nПрогноз погоды:"
+    print(output)
+    pp(dict_day)
 
 
 if __name__ == "__main__":
